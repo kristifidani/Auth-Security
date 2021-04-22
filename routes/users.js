@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const md5 = require('md5');
 
 //Import DB models
 const User = require('../models/users');
@@ -14,7 +15,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
     const newUser = new User({
         email: req.body.email,
-        password: req.body.password
+        password: md5(req.body.password)
     });
 
     newUser.save((err) => {
@@ -30,7 +31,7 @@ router.get('/login', (req, res) => {
 //Login user
 router.post('/login', (req, res) => {
     const email = req.body.email;
-    const password = req.body.password;
+    const password = md5(req.body.password);
 
     User.findOne({email}, (err, foundUser) => {
         if(err){
