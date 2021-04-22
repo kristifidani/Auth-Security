@@ -1,3 +1,5 @@
+//environmental variables
+require('dotenv').config();
 const express = require('express');
 const ejs = require('ejs');
 const mongoose = require("mongoose");
@@ -10,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 
 //Set up DB connection
-mongoose.connect("mongodb://localhost:27017/authSecurityDB", {
+mongoose.connect(process.env.DB_HOST, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -33,7 +35,6 @@ app.get('/', (req, res) => {
 
 
 //Initialize server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server started on port: ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server started on port: ${process.env.PORT}`);
 });
