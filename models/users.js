@@ -1,17 +1,15 @@
 //environmental variables
 require('dotenv').config();
 let mongoose = require("mongoose");
-//removed it when implemented lvl 3 hashin passwords
-//const encrypt = require('mongoose-encryption');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 //create schema
 const userSchema = new mongoose.Schema({
-    email: String,
+    username: String,
     password: String
   });
 
-//Encrypt db password
-//userSchema.plugin(encrypt, { secret: process.env.SECRET, encryptedFields: ['password'] });
+userSchema.plugin(passportLocalMongoose);
 
 //create model
 module.exports = mongoose.model('User', userSchema);
