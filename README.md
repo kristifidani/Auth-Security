@@ -2,7 +2,7 @@
 
 ### The aim of this project is to implement different authentication and security levels on a website.  
 
-- There are 6 git commits in this project and each of them corresponds to a different level of security. 
+- There are 6 git history commits in this project and each of them corresponds to a different level of security. 
 
 ### Technologies used
 
